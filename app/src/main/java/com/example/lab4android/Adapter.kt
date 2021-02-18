@@ -26,14 +26,14 @@ class Adapter(base: InputStream) : RecyclerView.Adapter<Adapter.ViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val bindibg = TextBinding.inflate(inflater , parent , false)
-        return ViewHolder(bindibg)
+        val binding = TextBinding.inflate(inflater , parent , false)
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val entry = database.getEntry(position%database.size())
 
-        holder.author.setText("Author: " + entry.getField(Keys.AUTHOR) + "\n")
+        holder.author.text = "Author: " + entry.getField(Keys.AUTHOR) + "\n"
         holder.title.text = "Title: " + entry.getField(Keys.TITLE) + "\n"
         holder.journal.text = "Journal: " + entry.getField(Keys.JOURNAL) + "\n"
         holder.page.text = "Pages: " + (entry.getField(Keys.PAGES) ?: "unknow")

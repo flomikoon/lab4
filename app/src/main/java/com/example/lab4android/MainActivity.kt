@@ -14,15 +14,7 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val manager = LinearLayoutManager(this , RecyclerView.VERTICAL , false )
-        val dividerItemDecoration = DividerItemDecoration(this , RecyclerView.VERTICAL)
-
-
-        binding.recyclerView.apply {
-            adapter = Adapter(resources.openRawResource(R.raw.articles))
-            layoutManager = manager
-            addItemDecoration(dividerItemDecoration)
-        }
-
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        binding.recyclerView.adapter = Adapter(resources.openRawResource((R.raw.articles)))
     }
 }
